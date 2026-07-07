@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4K Video Upscaler | Premium Video Processor</title>
+    <meta name="description" content="Upscale your videos to 4K resolution directly in your browser.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>4K Video Upscaler</h1>
+            <p>Enhance your videos to stunning 4K (2160p) securely in your browser. No data leaves your device.</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <!-- Video Upload -->
+                <div class="upload-card" id="video-upload-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </div>
+                    <h3>Upload Video</h3>
+                    <p>Select the video you want to upscale (.mp4, .webm)</p>
+                    <input type="file" id="video-input" accept="video/mp4, video/webm, video/x-m4v, video/*" hidden>
+                    <button class="btn primary-btn" onclick="document.getElementById('video-input').click()">Select Video</button>
+                    <div class="file-name" id="video-file-name"></div>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button id="process-btn" class="btn primary-btn pulse-btn" disabled>Upscale to 4K</button>
+            </div>
+
+            <div class="status-section" id="status-container" style="display: none;">
+                <div class="status-text" id="status-text">Loading FFmpeg core...</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="log-output" id="log-output"></div>
+            </div>
+
+            <div class="result-section" id="result-container" style="display: none;">
+                <h3>Process Complete!</h3>
+                <video id="output-video" controls></video>
+                <div style="margin-top: 1rem;">
+                    <a id="download-link" class="btn success-btn" download="video_4k.mp4">Download 4K Video</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FFmpeg.wasm scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.7/dist/umd/ffmpeg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
